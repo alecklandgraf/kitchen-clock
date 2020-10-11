@@ -1,7 +1,23 @@
+/* https://themer.dev/?colors.dark.accent0=%23CA3E5A&colors.dark.accent1=%23D8843E&colors.dark.accent2=%23EBB062&colors.dark.accent3=%2381A559&colors.dark.accent4=%2342ABAB&colors.dark.accent5=%234496CD&colors.dark.accent6=%239770B2&colors.dark.accent7=%23B35D8D&colors.dark.shade0=%2313222E&colors.dark.shade7=%23ACBECC&activeColorSet=dark&calculateIntermediaryShades.dark=true&calculateIntermediaryShades.light=true */
+:root {
+  --main-bg-color: #13222E;
+  --text: #ACBECC;
+  --syntax: #4496CD;
+  --syntax-alt: #42ABAB;
+  --special: #B35D8D;
+  --cursor: #9770B2;
+  --success: #81A559;
+  --warning: #EBB062;
+  --warning-alt: #D8843E;
+  --error: #CA3E5A;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
+  color: var(--text);
+  background-color: var(--main-bg-color);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
