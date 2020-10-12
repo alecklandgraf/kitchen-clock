@@ -32,6 +32,7 @@ export default function Home() {
       <Head>
         <title>kitchen clock</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
       </Head>
       <div className={styles.container_grid}>
         <div className={styles.clock}>{timeString}</div>
