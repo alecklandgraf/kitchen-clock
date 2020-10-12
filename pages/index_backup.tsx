@@ -65,14 +65,14 @@ export default function Home() {
 }
 
 
-<div className={styles.boxy}>
-          <div className={styles.title}>Air Quality Index</div>
-          <div className={styles.value}>{data.aqi}</div>
-        </div>
-        <div className={styles.boxy}>
-          <div className={styles.title}>Weather</div>
-          <div className={styles.value}>
-            {data.temp}º and {data.weather}
-          </div>
-        </div>
-      </div>
+// <div className={styles.boxy}>
+//           <div className={styles.title}>Air Quality Index</div>
+//           <div className={styles.value}>{data.aqi}</div>
+//         </div>
+//         <div className={styles.boxy}>
+//           <div className={styles.title}>Weather</div>
+//           <div className={styles.value}>
+//             {data.temp}º and {data.weather}
+//           </div>
+//         </div>
+//       </div>
