@@ -2,11 +2,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 type ResponseData = {
-  temp: number;
   aqi: number;
-  weather: string;
+  weather: any;
 };
 
 export default (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
-  res.status(200).json({ temp: 60, aqi: 9, weather: "cloudy" });
+  fetch(
+    "https://api.darksky.net/forecast/41e306817d377f0b24e696f138d4bcbf/45.5202,-122.6742"
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      res.status(200).json({ weather: data?.currently, aqi: 9 });
+    });
+
 };

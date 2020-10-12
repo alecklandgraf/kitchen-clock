@@ -41,3 +41,29 @@
   height: 10vh;
   color: var(--syntax);
 }
+
+.container_grid {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 25% auto;
+  grid-template-areas:
+    "clock clock"
+    "aqi weather";
+}
+
+.clock {
+  grid-area: clock;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+}
+
+.aqi {
+  grid-area: aqi;
+}
+
+.weather {
+  grid-area: weather;
+}

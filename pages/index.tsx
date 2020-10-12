@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from 'react'
 import useSWR from "swr";
 import styles from "../styles/Home.module.css";
 
@@ -8,6 +9,11 @@ export default function Home() {
   const { data, error } = useSWR("/api/hello", fetcher, {
     refreshInterval: 60000, // every minute
   });
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const id = setInterval(() => setDate(new Date()), 1000)
+    return () => clearInterval(id)
+  }, [date])
   if (error) {
     return (
       <div className={styles.error_container}>
@@ -30,20 +36,17 @@ export default function Home() {
         <title>kitchen clock</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container}>
-        <div className={styles.boxy}>
-          <div className={styles.title}>Air Quality Index</div>
-          <div className={styles.value}>{data.aqi}</div>
-        </div>
-        <div className={styles.boxy}>
-          <div className={styles.title}>Weather</div>
-          <div className={styles.value}>
-            
-            {data.temp}º and {data.weather}
+      <div className={styles.container_grid}>
+        <div className={styles.clock}>{`${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`}</div>
+        <div className={styles.aqi}>AQI {data.aqi}</div>
+        <div className={styles.weather}>
           
-          </div>
+          {Math.round(data.weather.temperature)}º {data.weather.icon}
+        
         </div>
       </div>
     </div>
   );
 }
+
+
