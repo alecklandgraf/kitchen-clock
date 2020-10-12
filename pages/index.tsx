@@ -36,9 +36,9 @@ export default function Home() {
       </Head>
       <div className={styles.container_grid}>
         <div className={styles.clock}>{timeString}</div>
-        <div className={styles.aqi}>AQI {data.aqi}</div>
+        <div className={styles.aqi}>AQI {data.aqi.v1}</div>
         <div className={styles.weather}>
-          {Math.round(data.weather.temperature)}º {data.weather.summary}
+          {Math.round(data.weather.temperature)}º & {data.weather.summary}
         </div>
       </div>
     </div>
