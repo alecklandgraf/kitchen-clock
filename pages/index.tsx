@@ -30,16 +30,18 @@ export default function Home() {
         <title>kitchen clock</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-
       <div className={styles.container}>
         <div className={styles.boxy}>
           <div className={styles.title}>Air Quality Index</div>
-          <div className={styles.value}>8</div>
+          <div className={styles.value}>{data.aqi}</div>
         </div>
         <div className={styles.boxy}>
           <div className={styles.title}>Weather</div>
-          <div className={styles.value}>60º and rainy</div>
+          <div className={styles.value}>
+            
+            {data.temp}º and {data.weather}
+          
+          </div>
         </div>
       </div>
     </div>
