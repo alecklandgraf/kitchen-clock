@@ -18,3 +18,26 @@
   padding: 10rem;
 }
 
+.error_container {
+  min-height: 100vh;
+  border: 1px solid var(--error);
+  color: var(--error);
+  display: grid;
+  place-items: center;
+
+}
+.error_content {
+  height: 10vh;
+  color: var(--error);
+}
+
+.loading_container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+}
+.loading_content {
+  height: 10vh;
+  color: var(--syntax);
+}
