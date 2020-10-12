@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Home() {
-  const { data, error } = useSWR("/api/hello", fetcher, {
+  const { data, error } = useSWR("/api/weather", fetcher, {
     refreshInterval: 60000 * 5, // every  5 minutes
   });
   const { timeString } = useClock();
