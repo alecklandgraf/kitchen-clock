@@ -1,5 +1,6 @@
 import Head from "next/head";
 import useSWR from "swr";
+import WeatherIcon from "../components/Weather";
 import useClock from "../hooks/useClock";
 import styles from "../styles/Home.module.css";
 
@@ -27,6 +28,7 @@ export default function Home() {
       </div>
     );
   }
+
   return (
     <div>
       <Head>
@@ -36,9 +38,10 @@ export default function Home() {
       </Head>
       <div className={styles.container_grid}>
         <div className={styles.clock}>{timeString}</div>
-        <div className={styles.aqi}>AQI {data.aqi.v1}</div>
+        <div className={styles.aqi}>AQI: {data.aqi.v1}</div>
         <div className={styles.weather}>
-          {Math.round(data.weather.temperature)}º & {data.weather.summary}
+          <WeatherIcon conditions={data.weather.icon}  />
+          <div className={styles.weatherText}>{Math.round(data.weather.temperature)}ºF - {data.weather.summary}</div>
         </div>
       </div>
     </div>

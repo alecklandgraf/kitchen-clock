@@ -47,7 +47,7 @@
   padding: 0 0.5rem;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 40% auto;
+  grid-template-rows: 50% auto;
   grid-template-areas:
     "clock clock"
     "aqi weather";
@@ -57,15 +57,27 @@
   grid-area: clock;
   display: grid;
   place-items: center;
-  font-size: 77px;
+  font-size: 150px;
 }
 
 .aqi {
   grid-area: aqi;
   font-size: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .weather {
   grid-area: weather;
   font-size: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weatherText {
+  font-size: 30px;
 }
