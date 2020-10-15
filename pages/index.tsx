@@ -29,6 +29,12 @@ export default function Home() {
     );
   }
 
+  let aqiColor = styles.success;
+  if (data.aqi.v1 > 50) aqiColor = styles.warning;
+  if (data.aqi.v1 > 100) aqiColor = styles.warningAlt;
+  if (data.aqi.v1 > 150) aqiColor = styles.error;
+
+
   return (
     <div>
       <Head>
@@ -38,10 +44,14 @@ export default function Home() {
       </Head>
       <div className={styles.container_grid}>
         <div className={styles.clock}>{timeString}</div>
-        <div className={styles.aqi}>AQI: {data.aqi.v1}</div>
+        <div className={styles.aqi}>
+          <span className={aqiColor}>AQI: {data.aqi.v1}</span>
+        </div>
         <div className={styles.weather}>
-          <WeatherIcon conditions={data.weather.icon}  />
-          <div className={styles.weatherText}>{Math.round(data.weather.temperature)}ºF - {data.weather.summary}</div>
+          <WeatherIcon conditions={data.weather.icon} />
+          <div className={styles.weatherText}>
+            {Math.round(data.weather.temperature)}ºF - {data.weather.summary}
+          </div>
         </div>
       </div>
     </div>

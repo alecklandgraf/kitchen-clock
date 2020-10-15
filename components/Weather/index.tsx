@@ -14,7 +14,6 @@ import {
   faCloudSunRain,
   faCloudMoonRain,
 } from "@fortawesome/free-solid-svg-icons";
-import useClock from "../../hooks/useClock";
 
 const iconMap = {
   "clear-day": faSun,

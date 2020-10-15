@@ -81,3 +81,19 @@
 .weatherText {
   font-size: 30px;
 }
+
+.success { 
+  color: var(--success);
+}
+
+.warning {
+  color: var(--warning);
+}
+
+.warningAlt {
+  color: var(--warning-alt);
+}
+
+.error {
+  color: var(--error);
+}
