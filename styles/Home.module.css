@@ -153,17 +153,24 @@
 
 .time_v2 {
   flex-grow: 4;
-
+  margin-left: 1.5rem;
   border: 1px solid var(--error);
   color: var(--text);
-  font-size: 120px;
+  font-size: 220px;
   flex-basis: 0%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   /* display: grid; */
   /* place-items: center; */
 
+}
+
+.time_v2 span {
+  font-size: 50px;
+  align-self: start;
+  position: relative;
+  top: 95px;
 }
 .temp_aqi_v2 {
   flex-grow: 1;

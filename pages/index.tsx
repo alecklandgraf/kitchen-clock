@@ -48,7 +48,9 @@ export default function Home() {
             <div className={styles.day_v2}>Monday</div>
             <div className={styles.date_v2}>Oct 13</div>
           </div>
-          <div className={styles.time_v2}>3:50 PM</div>
+          <div className={styles.time_v2}>
+            3:50 <span>PM</span>
+          </div>
           <div className={styles.temp_aqi_v2}>
             <div className={styles.temp_v2}>60ºF</div>
             <div className={styles.aqi_v2}>38</div>
