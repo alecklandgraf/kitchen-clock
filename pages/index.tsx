@@ -42,8 +42,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </Head>
-      <div className={styles.container_grid}>
-        <div className={styles.clock}>{timeString}</div>
+      <div className={styles.container_v2}>
+        <div className={styles.left_v2}>
+          <div className={styles.day_date_v2}>
+            <div className={styles.day_v2}>Monday</div>
+            <div className={styles.date_v2}>Oct 13</div>
+          </div>
+          <div className={styles.time_v2}>3:50 PM</div>
+          <div className={styles.temp_aqi_v2}>
+            <div className={styles.temp_v2}>60ºF</div>
+            <div className={styles.aqi_v2}>38</div>
+          </div>
+        </div>
+        <div className={styles.right_v2}>bob</div>
+        {/* <div className={styles.clock}>{timeString}</div>
         <div className={styles.aqi}>
           <span className={aqiColor}>AQI: {data.aqi.v1}</span>
         </div>
@@ -52,7 +64,7 @@ export default function Home() {
           <div className={styles.weatherText}>
             {Math.round(data.weather.temperature)}ºF - {data.weather.summary}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
