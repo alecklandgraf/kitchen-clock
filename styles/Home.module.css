@@ -124,7 +124,7 @@
   color: var(--text);
   display: grid;
   place-items: center;
-
+  font-size: 80px;
 }
 .day_date_v2 {
   flex-grow: 1;
@@ -154,7 +154,7 @@
 
 
 .time_v2 {
-  flex-grow: 4;
+  flex-grow: 3;
   margin-left: 1.5rem;
   outline: 1px dashed blue;
   color: var(--text);
@@ -180,7 +180,7 @@
   outline: 1px dashed blue;
   color: var(--text);
   display: flex;
-  font-size: 30px;
+  font-size: 40px;
 }
 .temp_v2 {
   flex-grow: 1;
