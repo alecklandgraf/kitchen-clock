@@ -20,6 +20,7 @@
 
 .error_container {
   min-height: 100vh;
+  flex-grow: 1;
   border: 1px solid var(--error);
   color: var(--error);
   display: grid;
@@ -83,7 +84,8 @@
 }
 
 .success { 
-  color: var(--success);
+  /* color: var(--success); */
+  color: #00cc00;
 }
 
 .warning {
@@ -96,4 +98,114 @@
 
 .error {
   color: var(--error);
+}
+
+
+/* v2 */
+.container_v2 {
+  min-height: 100vh;
+  padding: 12.5rem 3.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  /* outline: 1px dashed blue; */
+}
+
+.left_v2 {
+  width: 100%;
+  /* outline: 1px dashed blue; */
+  color: var(--error);
+  display: flex;
+  flex-direction: column;
+}
+.right_v2 {
+  width: 100%;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  font-size: 80px;
+  justify-content: center;;
+}
+
+.weather_summary {
+  font-size: 30px;
+}
+
+.day_date_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+}
+.day_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.date_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.time_v2 {
+  flex-grow: 3;
+  margin-left: 1.5rem;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  font-size: 220px;
+  flex-basis: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: grid; */
+  /* place-items: center; */
+
+}
+
+.time_v2 span {
+  font-size: 50px;
+  vertical-align: text-top;
+  /* align-self: start;
+  position: relative;
+  top: 95px; */
+}
+.temp_aqi_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  display: flex;
+  font-size: 40px;
+}
+.temp_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aqi_v2 {
+  flex-grow: 1;
+  /* outline: 1px dashed blue; */
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aqi_label {
+  font-size: 20px;
 }

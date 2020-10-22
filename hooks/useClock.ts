@@ -7,10 +7,10 @@ export type ClockOptions = {
 /**
  * A React hook that provides the current time
  * @returns {
- *  {  timeString: "4:05",
- *     hours: 4,
- *     minutes: 5,
+ *  {   hours: 4,
  *     isAm: false,
+ *     timeString: "4:05",
+ *     minutes: 5,
  * }
  */
 export default function useClock({ display24Hour = false }: ClockOptions = {}) {
