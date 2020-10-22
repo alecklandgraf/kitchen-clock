@@ -65,16 +65,6 @@ export default function Home() {
           <WeatherIcon conditions={data.weather.icon} />
           <div className={styles.weather_summary}>{data.weather.summary}</div>
         </div>
-        {/* <div className={styles.clock}>{timeString}</div>
-        <div className={styles.aqi}>
-          <span className={aqiColor}>AQI: {data.aqi.v1}</span>
-        </div>
-        <div className={styles.weather}>
-          <WeatherIcon conditions={data.weather.icon} />
-          <div className={styles.weatherText}>
-            {Math.round(data.weather.temperature)}ºF - {data.weather.summary}
-          </div>
-        </div> */}
       </div>
     </div>
   );
