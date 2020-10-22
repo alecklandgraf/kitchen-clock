@@ -34,7 +34,6 @@ export default function Home() {
   if (data.aqi.v1 > 100) aqiColor = styles.warningAlt;
   if (data.aqi.v1 > 150) aqiColor = styles.error;
 
-
   return (
     <div>
       <Head>
@@ -49,20 +48,23 @@ export default function Home() {
             <div className={styles.date_v2}>Oct 13</div>
           </div>
           <div className={styles.time_v2}>
-            <div>
-              {timeString} 
-            </div>
+            <div>{timeString}</div>
           </div>
           <div className={styles.temp_aqi_v2}>
             <div className={styles.temp_v2}>
-              
-              {Math.round(data.weather.temperature)}ºF
-            
+              {Math.round(data.weather.temperature)} ºF
             </div>
-            <div className={styles.aqi_v2}><span className={aqiColor}>{data.aqi.v1}</span></div>
+            <div className={styles.aqi_v2}>
+              <span className={aqiColor}>
+                {data.aqi.v1} <span className={styles.aqi_label}>AQI</span>
+              </span>
+            </div>
           </div>
         </div>
-        <div className={styles.right_v2}><WeatherIcon conditions={data.weather.icon} /></div>
+        <div className={styles.right_v2}>
+          <WeatherIcon conditions={data.weather.icon} />
+          <div className={styles.weather_summary}>{data.weather.summary}</div>
+        </div>
         {/* <div className={styles.clock}>{timeString}</div>
         <div className={styles.aqi}>
           <span className={aqiColor}>AQI: {data.aqi.v1}</span>
@@ -77,5 +79,3 @@ export default function Home() {
     </div>
   );
 }
-
-
