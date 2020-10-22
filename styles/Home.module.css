@@ -84,7 +84,8 @@
 }
 
 .success { 
-  color: var(--success);
+  /* color: var(--success); */
+  color: #00cc00;
 }
 
 .warning {
@@ -103,30 +104,31 @@
 /* v2 */
 .container_v2 {
   min-height: 100vh;
-  padding: 5.5rem 5.5rem;
+  padding: 7.5rem 5.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  outline: 1px dashed blue;
 }
 
 .left_v2 {
-  flex-grow: 1.25;
-  border: 1px solid var(--error);
+  width: 100%;
+  outline: 1px dashed blue;
   color: var(--error);
   display: flex;
   flex-direction: column;
 }
 .right_v2 {
-  flex-grow: 1;
-  border: 1px solid var(--error);
-  color: var(--error);
+  width: 100%;
+  outline: 1px dashed blue;
+  color: var(--text);
   display: grid;
   place-items: center;
 
 }
 .day_date_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
+  outline: 1px dashed blue;
   color: var(--text);
   font-size: 30px;
   display: flex;
@@ -134,7 +136,7 @@
 }
 .day_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
+  outline: 1px dashed blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -142,7 +144,7 @@
 }
 .date_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
+  outline: 1px dashed blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -154,12 +156,12 @@
 .time_v2 {
   flex-grow: 4;
   margin-left: 1.5rem;
-  border: 1px solid var(--error);
+  outline: 1px dashed blue;
   color: var(--text);
   font-size: 220px;
   flex-basis: 0%;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   /* display: grid; */
   /* place-items: center; */
@@ -168,30 +170,30 @@
 
 .time_v2 span {
   font-size: 50px;
-  align-self: start;
+  vertical-align: text-top;
+  /* align-self: start;
   position: relative;
-  top: 95px;
+  top: 95px; */
 }
 .temp_aqi_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
-  color: var(--error);
+  outline: 1px dashed blue;
+  color: var(--text);
   display: flex;
-
-
+  font-size: 30px;
 }
 .temp_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
-  color: var(--error);
+  outline: 1px dashed blue;
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .aqi_v2 {
   flex-grow: 1;
-  border: 1px solid var(--error);
-  color: var(--error);
+  outline: 1px dashed blue;
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;

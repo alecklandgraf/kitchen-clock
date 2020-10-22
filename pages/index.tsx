@@ -10,7 +10,7 @@ export default function Home() {
   const { data, error } = useSWR("/api/weather", fetcher, {
     refreshInterval: 60000 * 5, // every  5 minutes
   });
-  const { timeString } = useClock();
+  const { timeString, isAm } = useClock();
 
   if (error) {
     return (
@@ -49,14 +49,20 @@ export default function Home() {
             <div className={styles.date_v2}>Oct 13</div>
           </div>
           <div className={styles.time_v2}>
-            3:50 <span>PM</span>
+            <div>
+              {timeString} 
+            </div>
           </div>
           <div className={styles.temp_aqi_v2}>
-            <div className={styles.temp_v2}>60ºF</div>
-            <div className={styles.aqi_v2}>38</div>
+            <div className={styles.temp_v2}>
+              
+              {Math.round(data.weather.temperature)}ºF
+            
+            </div>
+            <div className={styles.aqi_v2}><span className={aqiColor}>{data.aqi.v1}</span></div>
           </div>
         </div>
-        <div className={styles.right_v2}>bob</div>
+        <div className={styles.right_v2}><WeatherIcon conditions={data.weather.icon} /></div>
         {/* <div className={styles.clock}>{timeString}</div>
         <div className={styles.aqi}>
           <span className={aqiColor}>AQI: {data.aqi.v1}</span>
