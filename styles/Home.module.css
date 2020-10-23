@@ -104,7 +104,7 @@
 /* v2 */
 .container_v2 {
   min-height: 100vh;
-  padding: 12.5rem 3.5rem;
+  padding: 12.5rem 2.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -125,7 +125,7 @@
   color: var(--text);
   display: grid;
   place-items: center;
-  font-size: 80px;
+  font-size: 70px;
   justify-content: center;;
 }
 

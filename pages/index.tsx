@@ -10,7 +10,7 @@ export default function Home() {
   const { data, error } = useSWR("/api/weather", fetcher, {
     refreshInterval: 60000 * 5, // every  5 minutes
   });
-  const { timeString, isAm } = useClock();
+  const { timeString, date, day, month } = useClock();
 
   if (error) {
     return (
@@ -44,8 +44,10 @@ export default function Home() {
       <div className={styles.container_v2}>
         <div className={styles.left_v2}>
           <div className={styles.day_date_v2}>
-            <div className={styles.day_v2}>Monday</div>
-            <div className={styles.date_v2}>Oct 13</div>
+            <div className={styles.day_v2}>{day}</div>
+            <div className={styles.date_v2}>
+              {month} {date}
+            </div>
           </div>
           <div className={styles.time_v2}>
             <div>{timeString}</div>

@@ -4,13 +4,42 @@ export type ClockOptions = {
   display24Hour?: boolean;
 };
 
+const days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+] as const;
+
+const months = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+] as const;
+
 /**
  * A React hook that provides the current time
  * @returns {
- *  {   hours: 4,
+ *  {  
+ *     date: 13,
+ *     day: 'Monday',
+ *     hours: 4,
  *     isAm: false,
- *     timeString: "4:05",
  *     minutes: 5,
+ *     month: 'Oct',
+ *     timeString: "4:05",
  * }
  */
 export default function useClock({ display24Hour = false }: ClockOptions = {}) {
@@ -36,9 +65,12 @@ export default function useClock({ display24Hour = false }: ClockOptions = {}) {
   }, []);
 
   return {
+    date: date.getDate(),
+    day: days[date.getDay()],
     hours,
     isAm,
     minutes,
+    month: months[date.getMonth()],
     timeString: `${hoursString}:${minutesString}`,
   };
 }
