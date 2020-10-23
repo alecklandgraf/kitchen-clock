@@ -84,10 +84,7 @@ export default function Home() {
       <div className={styles.container_v2}>
         <div className={styles.left_v2}>
           <div className={styles.day_date_v2}>
-            <div className={styles.day_v2}>{day}</div>
-            <div className={styles.date_v2}>
-              {month} {date}
-            </div>
+            <span>{day}</span> <span>{month}</span> <span>{date}</span>
           </div>
           <div className={styles.time_v2}>
             <div>{timeString}</div>
