@@ -1,10 +1,44 @@
 import Head from "next/head";
 import useSWR from "swr";
+import { DateTime, Interval } from "luxon";
 import WeatherIcon from "../components/Weather";
 import useClock from "../hooks/useClock";
 import styles from "../styles/Home.module.css";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+function timeDiff(dt: DateTime) {
+  const now = DateTime.local();
+  const dur = Interval.fromDateTimes(now, dt)
+    .toDuration(["hours", "minutes", "seconds"])
+    .toObject();
+
+  if (dur.hours < 1) {
+    return `${dur.minutes} minutes`;
+  }
+
+  let fraction = "";
+  if (dur.minutes > 8 && dur.minutes <= 22) fraction = "¼";
+  if (dur.minutes <= 38) fraction = "½";
+  if (dur.minutes <= 51) fraction = "¾";
+
+  return `${dur.hours}${fraction} hours`;
+}
+
+function sunriseSunsetText(sunriseTime: number, sunsetTime: number) {
+  if (Date.now() < sunsetTime * 1000) {
+    const dt = DateTime.fromSeconds(sunsetTime);
+
+    return `Sunset in ${timeDiff(dt)} (${dt.toLocaleString(
+      DateTime.TIME_SIMPLE
+    )})`;
+  }
+
+  const dt = DateTime.fromSeconds(sunriseTime);
+  return `Sunrise in ${timeDiff(dt)} (${dt.toLocaleString(
+    DateTime.TIME_SIMPLE
+  )})`;
+}
 
 export default function Home() {
   const { data, error } = useSWR("/api/weather", fetcher, {
@@ -27,12 +61,18 @@ export default function Home() {
         <div className={styles.loading_content}>Loading...</div>
       </div>
     );
+    1603501920;
   }
 
   let aqiColor = styles.success;
   if (data.aqi.v1 > 50) aqiColor = styles.warning;
   if (data.aqi.v1 > 100) aqiColor = styles.warningAlt;
   if (data.aqi.v1 > 150) aqiColor = styles.error;
+
+  const sunriseSunset = sunriseSunsetText(
+    data.weatherAll.daily.data[1].sunriseTime,
+    data.weatherAll.daily.data[0].sunsetTime
+  );
 
   return (
     <div>
@@ -61,6 +101,7 @@ export default function Home() {
                 {data.aqi.v1} <span className={styles.aqi_label}>AQI</span>
               </span>
             </div>
+            <div className={styles.sunrise_sunset_v2}>{sunriseSunset}</div>
           </div>
         </div>
         <div className={styles.right_v2}>

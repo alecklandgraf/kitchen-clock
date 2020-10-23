@@ -7,6 +7,7 @@ const SENSOR_ID = [70879,38591, 76631][0];
 type ResponseData = {
   aqi: Partial<PAStats>;
   weather: any;
+  weatherAll: any;
 };
 
 async function fetchWeather() {
@@ -124,9 +125,10 @@ async function fetchAQI() {
 
 export default (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
   Promise.all([fetchWeather(), fetchAQI()]).then(([weatherData, aqiData]) => {
-    res.status(200).json({ 
-      weather: weatherData?.currently, 
-      aqi: aqiData, 
-     });
+    res.status(200).json({
+      weather: weatherData?.currently,
+      aqi: aqiData,
+      weatherAll: weatherData,
+    });
   });
 };
