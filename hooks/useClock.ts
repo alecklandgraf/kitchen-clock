@@ -5,13 +5,13 @@ export type ClockOptions = {
 };
 
 const days = [
+  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
-  "Sunday",
 ] as const;
 
 const months = [
