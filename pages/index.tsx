@@ -101,12 +101,13 @@ export default function Home() {
                 {data.aqi.v1} <span className={styles.aqi_label}>AQI</span>
               </span>
             </div>
-            <div className={styles.sunrise_sunset_v2}>{sunriseSunset}</div>
+
           </div>
         </div>
         <div className={styles.right_v2}>
           <WeatherIcon conditions={data.weather.icon} />
           <div className={styles.weather_summary}>{data.weather.summary}</div>
+          <div className={styles.sunrise_sunset_v2}>{sunriseSunset}</div>
         </div>
       </div>
     </div>
