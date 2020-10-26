@@ -19,8 +19,8 @@ function timeDiff(dt: DateTime) {
 
   let fraction = "";
   if (dur.minutes > 8 && dur.minutes <= 22) fraction = "¼";
-  if (dur.minutes <= 38) fraction = "½";
-  if (dur.minutes <= 51) fraction = "¾";
+  if (dur.minutes > 22 && dur.minutes <= 38) fraction = "½";
+  if (dur.minutes > 38 && dur.minutes <= 51) fraction = "¾";
 
   return `${dur.hours}${fraction} hours`;
 }
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
           <div className={styles.temp_aqi_v2}>
             <div className={styles.temp_v2}>
-              {Math.round(data.weather.temperature)} ºF
+              {Math.round(data.weather.apparentTemperature)} ºF
             </div>
             <div className={styles.aqi_v2}>
               <span className={aqiColor}>
