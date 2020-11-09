@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 // click on sensors to get the ID https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&select=38591#14.5/45.50914/-122.62105
 // these are all valid, could fall back as needed
-const SENSOR_ID = [70879,38591, 76631][0]; 
+const SENSOR_IDS = [70879, 38591, 76631, 61137, 39215]; 
 type ResponseData = {
   aqi: Partial<PAStats>;
   weather: any;
@@ -108,8 +108,11 @@ function averageByKey(objs: AverageByKeyObj[], key: string) {
 }
 
 async function fetchAQI() {
+  // get a random sensor
   const response = await fetch(
-    `https://www.purpleair.com/json?show=${SENSOR_ID}`
+    `https://www.purpleair.com/json?show=${
+      SENSOR_IDS[Math.floor(Math.random() * SENSOR_IDS.length)]
+    }`
   );
   const data = await response.json();
 
