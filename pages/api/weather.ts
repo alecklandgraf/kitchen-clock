@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 // click on sensors to get the ID https://www.purpleair.com/map?opt=1/mAQI/a10/cC0&select=38591#14.5/45.50914/-122.62105
 // these are all valid, could fall back as needed
-const SENSOR_IDS = [70879, 38591, 76631, 61137, 39215]; 
+const SENSOR_IDS = [38591, 76631, 61137, 39215]; 
 type ResponseData = {
   aqi: Partial<PAStats>;
   weather: any;
@@ -109,14 +109,23 @@ function averageByKey(objs: AverageByKeyObj[], key: string) {
 
 async function fetchAQI() {
   // get a random sensor
-  const response = await fetch(
-    `https://www.purpleair.com/json?show=${
-      SENSOR_IDS[Math.floor(Math.random() * SENSOR_IDS.length)]
-    }`
+  const promises = SENSOR_IDS.map((id) =>
+    fetch(`https://www.purpleair.com/json?show=${id}`).then((resp) =>
+      resp.json()
+    )
   );
-  const data = await response.json();
+  const responses = await Promise.all(promises);
+  const data = responses.filter(
+    // filter readings older than 10 minutes
+    (resp) => (Date.now() / 1000 - resp.results[0].LastSeen) / 60 < 10
+  );
 
-  const stats = data.results.map(({ Stats }) => JSON.parse(Stats)) as PAStats[];
+  // pick a random entry
+  const reading = data[Math.floor(Math.random() * data.length)];
+
+  const stats = reading.results.map(({ Stats }) =>
+    JSON.parse(Stats)
+  ) as PAStats[];
   const aqi: Partial<PAStats> = {};
   const keys = ["v", "v1", "v2", "v3", "v4", "v5", "v6"] as const;
   keys.forEach((key) => {
