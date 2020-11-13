@@ -6,6 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 const SENSOR_IDS = [38591, 76631, 61137, 39215]; 
 type ResponseData = {
   aqi: Partial<PAStats>;
+  aqis: Partial<PAStats>[];
   weather: any;
   weatherAll: any;
 };
@@ -121,25 +122,30 @@ async function fetchAQI() {
   );
 
   // pick a random entry
-  const reading = data[Math.floor(Math.random() * data.length)];
+  // const reading = data[Math.floor(Math.random() * data.length)];
+  const aqis: Partial<PAStats>[] = [];
 
-  const stats = reading.results.map(({ Stats }) =>
-    JSON.parse(Stats)
-  ) as PAStats[];
-  const aqi: Partial<PAStats> = {};
-  const keys = ["v", "v1", "v2", "v3", "v4", "v5", "v6"] as const;
-  keys.forEach((key) => {
-    aqi[key] = aqiFromPM(averageByKey(stats, key));
+  data.forEach((reading) => {
+    const stats = reading.results.map(({ Stats }) =>
+        JSON.parse(Stats)
+    ) as PAStats[];
+    const aqi: Partial<PAStats> = {};
+    const keys = ["v", "v1", "v2", "v3", "v4", "v5", "v6"] as const;
+    keys.forEach((key) => {
+      aqi[key] = aqiFromPM(averageByKey(stats, key));
+    });
+    aqis.push(aqi);
   });
 
-  return aqi;
+  return aqis;
 }
 
 export default (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
   Promise.all([fetchWeather(), fetchAQI()]).then(([weatherData, aqiData]) => {
     res.status(200).json({
       weather: weatherData?.currently,
-      aqi: aqiData,
+      aqi: aqiData[0],
+      aqis: aqiData,
       weatherAll: weatherData,
     });
   });
