@@ -121,13 +121,11 @@ async function fetchAQI() {
     (resp) => (Date.now() / 1000 - resp.results[0].LastSeen) / 60 < 10
   );
 
-  // pick a random entry
-  // const reading = data[Math.floor(Math.random() * data.length)];
   const aqis: Partial<PAStats>[] = [];
 
   data.forEach((reading) => {
     const stats = reading.results.map(({ Stats }) =>
-        JSON.parse(Stats)
+      JSON.parse(Stats)
     ) as PAStats[];
     const aqi: Partial<PAStats> = {};
     const keys = ["v", "v1", "v2", "v3", "v4", "v5", "v6"] as const;
