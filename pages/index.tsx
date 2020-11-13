@@ -61,13 +61,14 @@ export default function Home() {
         <div className={styles.loading_content}>Loading...</div>
       </div>
     );
-    1603501920;
   }
 
+  const minAqi = Math.min(...data.aqis.map(x => x.v1));
+  const maxAqi = Math.max(...data.aqis.map(x => x.v1));
   let aqiColor = styles.success;
-  if (data.aqi.v1 > 50) aqiColor = styles.warning;
-  if (data.aqi.v1 > 100) aqiColor = styles.warningAlt;
-  if (data.aqi.v1 > 150) aqiColor = styles.error;
+  if (maxAqi > 50) aqiColor = styles.warning;
+  if (maxAqi > 100) aqiColor = styles.warningAlt;
+  if (maxAqi > 150) aqiColor = styles.error;
 
   const sunriseSunset = sunriseSunsetText(
     data.weatherAll.daily.data[1].sunriseTime,
@@ -95,7 +96,7 @@ export default function Home() {
             </div>
             <div className={styles.aqi_v2}>
               <span className={aqiColor}>
-                {data.aqi.v1} <span className={styles.aqi_label}>AQI</span>
+                {minAqi} - {maxAqi} <span className={styles.aqi_label}>AQI</span>
               </span>
             </div>
 
