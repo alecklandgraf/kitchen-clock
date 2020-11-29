@@ -63,7 +63,6 @@ export default function Home() {
     );
   }
 
-  const minAqi = Math.min(...data.aqis.map(x => x.v1));
   const maxAqi = Math.max(...data.aqis.map(x => x.v1));
   let aqiColor = styles.success;
   if (maxAqi > 50) aqiColor = styles.warning;
@@ -96,7 +95,7 @@ export default function Home() {
             </div>
             <div className={styles.aqi_v2}>
               <span className={aqiColor}>
-                {minAqi} - {maxAqi} <span className={styles.aqi_label}>AQI</span>
+                {maxAqi} <span className={styles.aqi_label}>AQI</span>
               </span>
             </div>
 
@@ -104,7 +103,7 @@ export default function Home() {
         </div>
         <div className={styles.right_v2}>
           <WeatherIcon conditions={data.weather.icon} />
-          <div className={styles.weather_summary}>{data.weather.summary}</div>
+          {/* <div className={styles.weather_summary}>{data.weather.summary}</div> */}
           <div className={styles.sunrise_sunset_v2}>{sunriseSunset}</div>
         </div>
       </div>
