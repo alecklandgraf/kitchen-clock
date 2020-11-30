@@ -44,7 +44,7 @@
   font-size: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
@@ -103,13 +103,13 @@
   align-items: center;
 }
 .sunrise_sunset_v2 {
-  flex-grow: 1;
   /* outline: 1px dashed blue; */
   color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
+  padding-top: 5%;
 }
 .aqi_v2 {
   flex-grow: 1;
