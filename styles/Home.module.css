@@ -27,6 +27,13 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   /* outline: 1px dashed blue; */
+  /* 
+    60,60 sunrise
+    75,30 peak
+    92,60 sunset
+   */
+  background: radial-gradient(circle at var(--horizontal) var(--vertical), rgba(253,187,45,1) 0%, rgba(39,100,117,1) 17%);
+
 }
 
 .left_v2 {

@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { DateTime, Interval } from "luxon";
 import WeatherIcon from "../components/Weather";
 import useClock from "../hooks/useClock";
+import useSunrise from "../hooks/useSunrise";
 import styles from "../styles/Home.module.css";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -45,6 +46,8 @@ export default function Home() {
     refreshInterval: 60000 * 5, // every  5 minutes
   });
   const { timeString, date, day, month } = useClock();
+  useSunrise();
+
 
   if (error) {
     return (
