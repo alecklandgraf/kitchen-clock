@@ -8,23 +8,23 @@ export default function useSunrise() {
     92,60 sunset
    */
   let v = 59;
-  let h = 89;
+  // let h = 89;
   let vStep = -1;
-  let hStep = .5;
+  // let hStep = .5;
   useEffect(() => {
     const root = document.documentElement;
 
     const id = setInterval(() => {
-      if (v === 30 || v === 60) {
+      if (v === 20 || v === 110) {
         vStep *= -1;
-        if (v === 60) {
-          hStep *= -1
-        }
+        // if (v === 60) {
+        //   hStep *= -1
+        // }
       }
-      h = h - hStep;
+      // h = h - hStep;
       v = v + vStep;
       root.style.setProperty("--vertical", `${v}%`);
-      root.style.setProperty("--horizontal", `${h}%`);
+      // root.style.setProperty("--horizontal", `${h}%`);
     }, 100);
 
     return () => clearInterval(id);
