@@ -123,3 +123,8 @@
 .aqi_label {
   font-size: 20px;
 }
+
+.strikethrough {
+  text-decoration: line-through;
+  opacity: 40%;
+}

@@ -25,7 +25,11 @@ function timeDiff(dt: DateTime) {
   return `${dur.hours}${fraction} hours`;
 }
 
-function sunriseSunsetText(sunriseTime: number, sunsetTime: number) {
+function isStaleData(timeInMillis: number): boolean {
+  return (Date.now() - timeInMillis) / 1000 / 60 > 25;
+}
+
+function sunriseSunsetText(sunriseTime: number, sunsetTime: number): string {
   if (Date.now() < sunsetTime * 1000) {
     const dt = DateTime.fromSeconds(sunsetTime);
 
@@ -91,7 +95,7 @@ export default function Home() {
           </div>
           <div className={styles.temp_aqi_v2}>
             <div className={styles.temp_v2}>
-              {Math.round(data.weather.apparentTemperature)} ºF
+              <span className={isStaleData(data.weather.time * 1000) && styles.strikethrough}>{Math.round(data.weather.apparentTemperature)} ºF</span>
             </div>
             <div className={styles.aqi_v2}>
               <span className={aqiColor}>
