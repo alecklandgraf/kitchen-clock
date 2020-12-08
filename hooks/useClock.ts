@@ -50,6 +50,8 @@ export default function useClock({ display24Hour = false }: ClockOptions = {}) {
   let hoursString = `${hours}`;
   if (!display24Hour && !isAm) {
     hoursString = `${hours === 12 ? hours : hours - 12}`;
+  } else if (!display24Hour && hours === 0) {
+    hoursString = '12';
   }
   const minutesString = `${minutes}`.padStart(2, "0");
 
